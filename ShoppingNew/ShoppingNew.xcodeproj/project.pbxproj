@@ -26,7 +26,6 @@
 		C5263A8C21F909F9004C6313 /* SukhumvitSet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5263A8621F909F9004C6313 /* SukhumvitSet-Medium.ttf */; };
 		C5263A8D21F909F9004C6313 /* SukhumvitSet-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5263A8721F909F9004C6313 /* SukhumvitSet-SemiBold.ttf */; };
 		C52E5C06221E0D2F004E76E0 /* TEstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E5C05221E0D2F004E76E0 /* TEstViewController.swift */; };
-		C539F5FD2221420200522C34 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539F5FC2221420200522C34 /* File.swift */; };
 		C53EAFBE221A755200312A5A /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EAFBD221A755200312A5A /* EditAddressViewController.swift */; };
 		C53EAFC0221A767200312A5A /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EAFBF221A767200312A5A /* AccountCell.swift */; };
 		C563D2B2220DADF800C6D297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C563D2B1220DADF800C6D297 /* Assets.xcassets */; };
@@ -85,7 +84,6 @@
 		C5263A8621F909F9004C6313 /* SukhumvitSet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SukhumvitSet-Medium.ttf"; sourceTree = "<group>"; };
 		C5263A8721F909F9004C6313 /* SukhumvitSet-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SukhumvitSet-SemiBold.ttf"; sourceTree = "<group>"; };
 		C52E5C05221E0D2F004E76E0 /* TEstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEstViewController.swift; sourceTree = "<group>"; };
-		C539F5FC2221420200522C34 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		C53EAFBD221A755200312A5A /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		C53EAFBF221A767200312A5A /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		C563D2B1220DADF800C6D297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 		C58EFF1A21F904FA00C5E0DD = {
 			isa = PBXGroup;
 			children = (
-				C539F5FC2221420200522C34 /* File.swift */,
 				C58EFF2521F904FA00C5E0DD /* ShoppingNew */,
 				C58EFF2421F904FA00C5E0DD /* Products */,
 				4BA3C0F2C61D7EDFF5AA5670 /* Pods */,
@@ -422,7 +419,6 @@
 				C58EFF4B21F905E100C5E0DD /* MainViewController.swift in Sources */,
 				C50C3AEF220868E700D8BB92 /* AddAddressViewController.swift in Sources */,
 				C50C3AF3220873DD00D8BB92 /* AdressCell.swift in Sources */,
-				C539F5FD2221420200522C34 /* File.swift in Sources */,
 				C51EC82B220C197D003F5284 /* HistoryOrderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,13 +568,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M84X7Q4BMW;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ShoppingNew/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nontawat.ShoppingNew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pandas.ShoppingMed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -593,13 +590,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M84X7Q4BMW;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ShoppingNew/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nontawat.ShoppingNew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pandas.ShoppingMed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

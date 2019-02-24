@@ -12,7 +12,7 @@ import Toast_Swift
 
 
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UIScrollViewDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UIScrollViewDelegate , UICollectionViewDelegateFlowLayout {
     
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
@@ -66,6 +66,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.reloadData()
         
         getImageSlide()
+        
         
       
         
@@ -286,15 +287,24 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     collectionView.reloadData()
     }
     
+
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellHeight = 155
+        let cellWidth = (collectionView.bounds.size.width - 15) / 3 // 2 count of colomn to show
+        return CGSize(width: CGFloat(cellWidth), height: CGFloat(cellHeight))
+        
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
+
+
         print("\(indexPath.item)")
-        
+
        self.performSegue(withIdentifier: "goProduct", sender: nil)
-        
+
         var i = 0
         while i < dataCat.count {
             if CatFilter[indexPath.item] == dataCat[i] {
@@ -303,12 +313,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             i = i + 1
         }
-        
+
         SearchBar.text = ""
         CatFilter = dataCat
         collectionView.reloadData()
-        
+
     }
+    
+  
+    
     
 }
 

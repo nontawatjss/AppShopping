@@ -12,6 +12,18 @@ import FacebookLogin
 import FBSDKLoginKit
 import Alamofire
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class LoginViewController: UIViewController{
 
     @IBOutlet weak var FBLogin: UIButton!
@@ -47,6 +59,8 @@ class LoginViewController: UIViewController{
         
         appDelegate.OrderData.removeAll()
         
+        
+        
     }
     
     
@@ -63,7 +77,7 @@ class LoginViewController: UIViewController{
         
         MailIcon.image = MailIcon.image?.withRenderingMode(.alwaysTemplate)
         MailIcon.tintColor = UIColor(red: 23.0/255.0, green: 172.0/255.0, blue: 230.0/255.0, alpha: 1.0)
-        
+
         
         
     }

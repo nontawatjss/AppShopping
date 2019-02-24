@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController {
 
     @IBOutlet weak var ViewFrom: UIView!
     
+    @IBOutlet weak var ScrollV: UIScrollView!
     @IBOutlet weak var BTRegister: UIButton!
     
     @IBOutlet weak var FName: UITextField!
@@ -26,7 +27,16 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
        CustomView()
-    
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
+      
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
     }
     
     func CustomView() {
@@ -227,6 +237,29 @@ class RegisterViewController: UIViewController {
         
         
     }
+    
+    
+   
+    @objc func adjustForKeyboard(notification: Notification) {
+        let userInfo = notification.userInfo!
+        
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            ScrollV.contentInset = UIEdgeInsets.zero
+        } else {
+            ScrollV.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
+        
+        ScrollV.scrollIndicatorInsets = ScrollV.contentInset
+        
+      //  let selectedRange = Pass2.selectedRange
+      //  Pass2.scrollRangeToVisible(selectedRange)
+    }
+    
+
+    
     
   
 }

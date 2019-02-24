@@ -27,6 +27,11 @@ class AlertLoginViewController: UIViewController {
         closeBT.layer.cornerRadius = 5.0
         closeBT.layer.borderWidth = 1.0
         closeBT.layer.borderColor = UIColor(red: 23.0/255.0, green: 172.0/255.0, blue: 230.0/255.0, alpha: 1.0).cgColor
+        
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
        
     }
     
