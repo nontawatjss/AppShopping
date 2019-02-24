@@ -399,7 +399,7 @@ class PayMentViewController: UIViewController,UINavigationControllerDelegate, UI
      print("Send Payment Click")
         
         
-   //  self.PostOrderDetail()
+     self.PostOrderDetail()
         
 
      performSegue(withIdentifier: "goAlert", sender: nil)

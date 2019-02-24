@@ -11,7 +11,8 @@ import Alamofire
 
 class DetailUserViewController: UIViewController{
 
-   
+    @IBOutlet weak var ShowPassword: UIButton!
+    
     @IBOutlet weak var ViewForm: UIView!
     @IBOutlet weak var Fname: UITextField!
     @IBOutlet weak var Lname: UITextField!
@@ -23,10 +24,14 @@ class DetailUserViewController: UIViewController{
     @IBOutlet weak var Pass2: UITextField!
     @IBOutlet weak var BTConfirm: UIButton!
     
+    var passClick = true
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     
+        
         let backButton = UIBarButtonItem()
         backButton.title = ""
 
@@ -37,8 +42,9 @@ class DetailUserViewController: UIViewController{
         ViewForm.layer.cornerRadius = 5.0
         BTConfirm.layer.cornerRadius = 5.0
         
-        
         showUserDetail()
+        
+        
         
        
     }
@@ -53,6 +59,9 @@ class DetailUserViewController: UIViewController{
         Pass2.text = appDelegate.UserDetail["password"]
         
     }
+    
+   
+    
     
     override func viewWillAppear(_ animated: Bool) {
         print("ข้อมูลส่วนตัว")
@@ -172,5 +181,17 @@ class DetailUserViewController: UIViewController{
     
     
     
+    @IBAction func ShowPassAc(_ sender: Any) {
+        
+        //            if(passClick == true) {
+        //                Pass1.isSecureTextEntry = false
+        //            } else {
+        //               Pass1.isSecureTextEntry = true
+        //            }
+        //
+        //            passClick = !passClick
+        
+        print("asd")
+    }
     
 }

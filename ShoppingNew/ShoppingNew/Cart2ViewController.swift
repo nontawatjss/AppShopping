@@ -10,6 +10,7 @@ import UIKit
 
 class Cart2ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var TableHieght: NSLayoutConstraint!
     @IBOutlet weak var EditAddress: UIButton!
     @IBOutlet weak var AddAddress: UIButton!
     
@@ -190,6 +191,9 @@ class Cart2ViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        TableHieght.constant = CGFloat(appDelegate.OrderData.count * 85)
+        
         return appDelegate.OrderData.count
     }
     

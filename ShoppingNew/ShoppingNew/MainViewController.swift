@@ -18,6 +18,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return .portrait
     }
     
+    @IBOutlet weak var ScrollV: UIScrollView!
+    @IBOutlet weak var CollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var ImageShow: ImageSlideshow!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,6 +38,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var CatFilter = [String]()
     var dataCat = [String]()
+    
+    var tapKey = UITapGestureRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,9 +73,33 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         getImageSlide()
         
         
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(ShowKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(HideKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
       
         
     }
+    
+    @objc func ShowKeyboard(notification: Notification) {
+        
+        tapKey = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tapKey)
+    
+ 
+    }
+    
+    @objc func HideKeyboard(notification: Notification) {
+        
+        
+        view.removeGestureRecognizer(tapKey)
+        
+    }
+    
+    
+   
+    
     
     func getImageSlide() {
         
@@ -235,6 +264,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
+        CollectionHeight.constant = CGFloat((CatFilter.count/3)+1) * 165.0
+        
+        collectionView.isScrollEnabled = false
+        
         return CatFilter.count
     }
     
@@ -284,7 +317,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
      print(CatFilter)
         
-    collectionView.reloadData()
+     collectionView.reloadData()
     }
     
 

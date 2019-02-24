@@ -11,7 +11,9 @@ import UIKit
 
 class TEstViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Text1: UITextField!
+    @IBOutlet weak var Test1: UILabel!
     
+    @IBOutlet weak var FomView: NSLayoutConstraint!
     @IBOutlet weak var Text2: UITextField!
     @IBOutlet weak var ScrollV: UIScrollView!
     @IBOutlet weak var ViewForm: UIView!
@@ -76,5 +78,10 @@ class TEstViewController: UIViewController, UITextFieldDelegate {
     }
 
     
-
+    @IBAction func BTAc(_ sender: Any) {
+        Test1.isHidden = true
+        FomView.constant = FomView.constant - (FomView.constant/3)
+        
+    }
+    
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class DetailHistoryViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
   
+    @IBOutlet weak var ScrollV: UIScrollView!
     
     
     @IBOutlet weak var View1: UIView!
@@ -31,7 +32,10 @@ class DetailHistoryViewController: UIViewController,UITableViewDelegate, UITable
     
     @IBOutlet weak var ImageStatus: UIImageView!
     @IBOutlet weak var IdOrder: UILabel!
+    
+    
     var StatusName = ""
+    var StatusID = 0
     var DateName = ""
     var AllPriceName = ""
     var AddressArea = ""
@@ -107,6 +111,9 @@ class DetailHistoryViewController: UIViewController,UITableViewDelegate, UITable
                                     self.EmsCode.isHidden = true
                                 case 2 :
                                     imgStatus = "icon_wait_send"
+                                     self.heightView1.constant = self.heightView1.constant-46.0
+                                    self.NameEms.isHidden = true
+                                    self.EmsCode.isHidden = true
                                 case 3 :
                                     imgStatus = "icon_order_send"
                                     self.NameEms.isHidden = false
@@ -122,6 +129,7 @@ class DetailHistoryViewController: UIViewController,UITableViewDelegate, UITable
                                 self.AllPriceName = totalPrice
                                 self.DateName = datein
                                 self.ImageS = imgStatus
+                                self.StatusID = statusid
                                 
                                 
                                 //Address
@@ -135,7 +143,7 @@ class DetailHistoryViewController: UIViewController,UITableViewDelegate, UITable
                                              let addressline1 = "\(heroeD.value(forKey: "address_line1")!)"
                                             
                                             
-                                            self.AddressArea = "\(heroeD.value(forKey: "address_line2")!) \n\(heroeD.value(forKey: "address_line1")!) \nตำบล \(heroeD.value(forKey: "address_tambon")!) อำเภอ \(heroeD.value(forKey: "address_amphoe")!) จังหวัด \(heroeD.value(forKey: "address_province")!) \(heroeD.value(forKey: "address_zipcode")!)"
+                                            self.AddressArea = "\(self.appDelegate.UserDetail["fname"]!) \(self.appDelegate.UserDetail["lname"]!) \n\(heroeD.value(forKey: "address_line1")!) \nตำบล \(heroeD.value(forKey: "address_tambon")!) อำเภอ \(heroeD.value(forKey: "address_amphoe")!) จังหวัด \(heroeD.value(forKey: "address_province")!) \(heroeD.value(forKey: "address_zipcode")!)"
 
                                         }
 
@@ -202,6 +210,13 @@ class DetailHistoryViewController: UIViewController,UITableViewDelegate, UITable
         IdOrder.text = "คำสั่งซื้อ #\(appDelegate.HistorySelect)"
         Status.text = StatusName
         ImageStatus.image = UIImage(named: "\(ImageS)")
+        if StatusID == 3 {
+            
+            Status.textColor = UIColor(red: 40/255, green: 208/255, blue: 148/255, alpha: 1.0)
+            
+        }else{
+            Status.textColor = UIColor(red: 254/255, green: 196/255, blue: 59/255, alpha: 1.0)
+        }
         
         
         let dateFormatter = DateFormatter()

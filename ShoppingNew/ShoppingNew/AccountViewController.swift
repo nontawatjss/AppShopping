@@ -13,7 +13,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
 
     var numbers = ["ข้อมูลส่วนตัว","ข้อมูลที่อยู่","ประวัติการสั่งซื้อ","เกี่ยวกับเรา","ออกจากระบบ"]
-    var iconMenu = ["icon_infomation","icon_address","icon_history_order","icon_home","exit"]
+    var iconMenu = ["icon_infomation","icon_address","icon_history_order","icon_home","icon_logout"]
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     

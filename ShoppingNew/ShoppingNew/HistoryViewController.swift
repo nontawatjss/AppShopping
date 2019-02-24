@@ -129,17 +129,21 @@ class HistoryViewController: UIViewController , UITableViewDelegate, UITableView
             i = i + 1
         }
         
-        let headerLabel = UILabel(frame: CGRect(x: 10, y: 5, width:
+        let headerLabel = UILabel(frame: CGRect(x: 5, y: 5, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
-        headerLabel.font = UIFont(name: "Prompt-Medium", size: 16)
+        headerLabel.font = UIFont(name: "Prompt-Medium", size: 14)
         headerLabel.textColor = UIColor.init(red: 69/255, green: 69/255, blue: 69/255, alpha: 1.0)
         headerLabel.text = "คำสั่งซื้อ #\(OrderList[id]["order_id"]!)"
         headerLabel.sizeToFit()
+        
+//        headerLabel.minimumScaleFactor = 0.5
+//        headerLabel.adjustsFontSizeToFitWidth = true
+
         vw.addSubview(headerLabel)
         
         
         let button = UIButton(type: .system)
-        button.frame = CGRect(x: tableView.frame.width - 90, y: 0, width: 100, height: tableView.bounds.size.height)
+        button.frame = CGRect(x: tableView.frame.width - 85, y: 0, width: 100, height: tableView.bounds.size.height)
         button.titleLabel?.font = UIFont(name: "Prompt-Medium", size: 14)
         button.tintColor = UIColor.init(red: 23/255, green: 172/255, blue: 230/255, alpha: 1.0)
        
@@ -202,10 +206,13 @@ class HistoryViewController: UIViewController , UITableViewDelegate, UITableView
         switch imageID {
         case 1 :
             cell.ImgStatus.image = UIImage(named: "icon_wait_check")
+             cell.Status.textColor = UIColor(red: 254/255, green: 196/255, blue: 59/255, alpha: 1.0)
         case 2 :
             cell.ImgStatus.image = UIImage(named: "icon_wait_send")
+            cell.Status.textColor = UIColor(red: 254/255, green: 196/255, blue: 59/255, alpha: 1.0)
         case 3 :
             cell.ImgStatus.image = UIImage(named: "icon_order_send")
+            cell.Status.textColor = UIColor(red: 40/255, green: 208/255, blue: 148/255, alpha: 1.0)
         default:
             print("not All")
         }

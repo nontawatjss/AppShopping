@@ -15,6 +15,7 @@ import Alamofire
 
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var TableHeight: NSLayoutConstraint!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var view2: UIView!
@@ -131,6 +132,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        TableHeight.constant = CGFloat(appDelegate.OrderData.count * 85)
+        
         return appDelegate.OrderData.count
     }
     

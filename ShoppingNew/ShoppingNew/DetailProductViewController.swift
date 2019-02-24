@@ -11,8 +11,7 @@ import iOSDropDown
 
 class DetailProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
-    
+    @IBOutlet weak var OptionName: UILabel!
     @IBOutlet weak var ChooseBT: UIButton!
     
     @IBOutlet weak var TableViewChoose: UITableView!
@@ -20,7 +19,6 @@ class DetailProductViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tblDropdown: NSLayoutConstraint!
     
     var isTableviewVisible = false
-    
     
     @IBOutlet weak var nameProduct: UILabel!
     @IBOutlet weak var priceProduct: UILabel!
@@ -66,10 +64,24 @@ class DetailProductViewController: UIViewController, UITableViewDataSource, UITa
         detailProduct.layer.cornerRadius = 5.0
         detailProduct.text = item["Pdescription"]!
         nameProduct.text = item["Pname"]!
+        OptionName.text = ""
         
         let price = Int(item["Pprice"]!)
         priceProduct.text = "ราคา \(price!.delimiter) บาท"
         amountLabel.text = "1"
+        
+        if Int(item["Pchoose"]!) == 0 {
+            
+            ChooseBT.isEnabled = false
+            ChooseBT.setTitle("   ไม่มีตัวเลือกเสริม", for: .normal)
+            ChooseBT.alpha = 0.3
+            
+        }else{
+            ChooseBT.alpha = 1.0
+             ChooseBT.setTitle("   เลือกตัวเลือกเสริม", for: .normal)
+            ChooseBT.isEnabled = true
+            
+        }
         
         
         
@@ -97,6 +109,8 @@ class DetailProductViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewWillAppear(_ animated: Bool) {
        // navigationController?.setNavigationBarHidden(false, animated: animated)
+
+    
     }
    
     
@@ -154,7 +168,9 @@ class DetailProductViewController: UIViewController, UITableViewDataSource, UITa
         
         priceProduct.text = "\(currentCell.PriceCell.text!)"
         
-        nameProduct.text = "\(appDelegate.ProductData[appDelegate.SelectProduct]["Pname"]!) \(currentCell.NameCell.text!)"
+        OptionName.text = "\(currentCell.NameCell.text!)"
+        
+        nameProduct.text = "\(appDelegate.ProductData[appDelegate.SelectProduct]["Pname"]!)"
         UIView.animate(withDuration: 0.5) {
             self.tblDropdown.constant = 0.0
             self.isTableviewVisible = false
@@ -312,7 +328,7 @@ class DetailProductViewController: UIViewController, UITableViewDataSource, UITa
             
             if selectChooseCheck == true{
                 
-               Pname = nameProduct.text!
+               Pname = "\(nameProduct.text!) \(OptionName.text!)"
                Pprice = Int(ChooseProduct[selectChoose]["choose_price"]!)!
                Pamonut = amount!
                PChoose = "\(ChooseProduct[selectChoose]["choose_id"]!)"
